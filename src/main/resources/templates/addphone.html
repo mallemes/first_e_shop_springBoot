@@ -1,0 +1,45 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  layout:decorate="layout/main.html "
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div layout:fragment="SContent">
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>PHOTO</th>
+                        <th>NAME</th>
+                        <th>MARKA</th>
+                        <th>PRICE($)</th>
+                        <th>DESCRIPTION</th>
+                        <th>COUNTRY</th>
+                        <th>CATEGORY</th>
+                        <th width="7%" sec:authorize="hasAnyAuthority('MODERATOR_ROLE')">DETAILS</th>
+                        <th width="7%">show</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="it: ${addphone}" >
+
+                        <td th:text="${it.id}"></td>
+                        <td ><img width="25%" th:src="${it.photo}"></td>
+                        <td th:text="${it.name}"></td>
+                        <td th:text="${it.marka}"></td>
+                        <td th:text="${it.price}"></td>
+                        <td th:text="${it.description}"></td>
+                        <td th:text="${it.country}"></td>
+                        <td th:text="${it.category.catName}" ></td>
+                    <td sec:authorize="hasAnyAuthority('MODERATOR_ROLE')" >
+                            <a  th:href="@{'/details/' + ${it.id}}"  class="btn btn-info btn sm" >DETAILS</a>
+                        </td>
+                        <td > <a th:href="@{'/show/' + ${it.id}}" class="btn btn-info btn sm"> SHOW</a> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

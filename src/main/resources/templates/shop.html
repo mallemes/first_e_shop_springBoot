@@ -1,0 +1,98 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="SContent">
+    <h1 class="text-center">HELLO</h1>
+
+
+
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="left-sidebar" >
+                        <h2>Category</h2>
+                        <div  class="panel-group category-products" id="accordian"><!--category-productsr-->
+
+
+
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+                                    <tr th:each="tv: ${shop}" th:if="${tv.category.catName=='phone'}"></tr>
+                                    <h4 class="panel-title"><a th:href="${'/shop'}" >phones</a></h4>
+                                </div>
+
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <tr th:each="tv: ${shop}" th:if="${tv.category.catName=='laptop'}"></tr>
+                                    <h4 class="panel-title"><a href="/shop?category_id==5">laptop</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="#">planshet</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="#">smart watchs</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="#">headphones</a></h4>
+                                </div>
+                            </div>
+
+                        </div><!--/category-productsr-->
+
+
+
+
+
+
+
+                    </div>
+                </div>
+
+                <div class="col-sm-9 padding-right">
+                    <div class="features_items"><!--features_items-->
+                        <h2 class="title text-center"> Items</h2>
+
+
+
+                                        <form >
+
+
+
+                                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                                <tr th:each="tv: ${shop}"  >
+                                                <div class="col">
+                                                    <div class="card">
+                                                        <img  name="photo" th:src="${tv.photo}"  style =" height: 187px; " class="card-img-top" >                                                        <div class="card-body">
+                                                        <h5 class="card-title" name="price"  th:text="${tv.price +' $'}"></h5>
+                                                        <p class="card-text" name="name"  th:text="${tv.name}"></p>
+                                                        <p class="card-text" name="description"   th:text="${tv.description}"><small class="text-muted"></small></p>
+                                                        <a  th:href="@{'/korzina/' + ${tv.id}}" class="btn btn-success" >v korzinu</a>
+
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+
+                                        </form>
+
+
+
+
+
+                    </div><!--features_items-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</html>

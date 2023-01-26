@@ -1,0 +1,63 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="SContent">
+    <form th:action="@{'/savephone'}" method="post" th:if="${home!=null}">
+        <input type="hidden" name="id" th:value="${home.id}">
+        <div class="col-6 mx-auto">
+            <h1 class="text-center">
+                Details Item
+            </h1>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <label>NAME: </label>
+                </div>
+            </div>
+            <div class="col">
+                <input type="text" name="name"  class="form-control" th:value="${home.name}">
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <label>MARKA: </label>
+                </div>
+            </div>
+            <div class="col">
+                <input type="text" name="marka"  class="form-control" th:value="${home.marka}">
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <label>PRISE($): </label>
+                </div>
+            </div>
+            <div class="col">
+                <input type="text" name="price"  class="form-control" th:value="${home.price}">
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <label>DESCRIPTION: </label>
+                </div>
+            </div>
+            <div class="col">
+                <input type="text" name="description"  class="form-control" th:value="${home.description}">
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-6">
+                    <label>COUNTRY: </label>
+                </div>
+            </div>
+            <div class="col">
+                <input type="text" name="country"  class="form-control" th:value="${home.country}">
+            </div>
+            <br>
+            <button class="btn btn-success">Save </button>
+        </div>
+    </form>
+    <br>
+    <form th:action="@{'/deletephone'}" method="post" th:if="${home!=null}">
+        <div class="col-6 mx-auto ">
+            <input type="hidden" name="id" th:value="${home.id}">
+            <button class="btn btn-danger">Delete </button>
+        </div>
+    </form>
+</div>
+</html>

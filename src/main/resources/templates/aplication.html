@@ -1,0 +1,108 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html "
+      xmlns="http://www.w3.org/1999/html">
+<div layout:fragment="SContent">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: navy">
+                    +ADD NEW
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">ADD NEW PRODUCT</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form th:action="@{'/addphone'}" method="post">
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <label>NAME: </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="name" required placeholder="Name">
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <label>MARKA: </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="marka"required placeholder="Marka">
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <label>PHOTO(URL): </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="photo"required placeholder="Photo">
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <label>PRICE: </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="number" class="form-control" name="price"required placeholder="Price">
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <label>DESCRIPTION: </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="description"required placeholder="Description">
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <label>COUNTRY: </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="country" required placeholder="Country">
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <label>CATEGORY: </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                     <select name="category"  >
+                                         <option  th:each="categ:${cat}" th:text="${categ.catName}" th:value="${categ.id}"></option>
+                                     </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button  class="btn btn-success">Save changes</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+
+    <div class="container">
+        <div class="text-center">
+
+        </div>
+    </div>
+</div>
+</div>
+</html>
